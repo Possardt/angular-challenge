@@ -16,10 +16,16 @@ export class FullAlbumPageRouteComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private photoService: PhotoService
-  ) { }
+  ) {
+    this.albumId = this.route.snapshot.paramMap.get('albumId');
+   }
 
   ngOnInit() {
     this.photoService.getAlbumPhotos(this.albumId).subscribe(photos => this.photos = photos);
+  }
+
+  fullScreenPhoto() {
+    console.log('clicked');
   }
 
 }

@@ -1,3 +1,7 @@
-<p>
-  full-album-page-route works!
-</p>
+<div *ngIf='photos' class='photos-container'>
+    <ng-template ngFor let-photo [ngForOf]="photos" let-i="index">
+      <div (click)='fullScreenPhoto(photo)' class='photo'>
+        <img src='{{photo.thumbnailUrl}}' />
+      </div>
+    </ng-template>
+</div>
