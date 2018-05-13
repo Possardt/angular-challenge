@@ -1,3 +1,7 @@
-<p>
-  album-page-route works!
-</p>
+<div *ngIf='albums' class='albums-container'>
+  <ng-template ngFor let-album [ngForOf]="albums" let-i="index">
+    <div (click)='routeToFullAlbum(album.id)' class='album'>
+      <img src='{{albumThumbnails[album.id]}}' />
+    </div>
+  </ng-template>
+</div>

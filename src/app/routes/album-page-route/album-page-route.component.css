@@ -1,0 +1,22 @@
+.albums-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.album{
+    opacity:0;
+    animation:fadeIn 100ms ease-in-out;
+    -webkit-animation: 100ms ease-in-out;
+    animation-direction: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

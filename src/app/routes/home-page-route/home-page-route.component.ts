@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../../services/photo.services';
+import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page-route',
@@ -7,12 +9,18 @@ import { PhotoService } from '../../services/photo.services';
   styleUrls: ['./home-page-route.component.css']
 })
 export class HomePageRouteComponent implements OnInit {
-
-  constructor(private photoService: PhotoService) { }
+  private users: User[];
+  constructor(
+    private photoService: PhotoService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    console.log('inhere');
-    this.photoService.getUsers().subscribe(data => console.log(data));
+    this.photoService.getUsers().subscribe(users => this.users = users);
+  }
+
+  routeToAlbums(userId: string) {
+    return this.router.navigateByUrl(`users/${userId}/albums`);
   }
 
 }

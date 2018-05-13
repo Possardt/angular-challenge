@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../../services/photo.services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Photo } from '../../models/photo';
 
 @Component({
   selector: 'app-full-album-page-route',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./full-album-page-route.component.css']
 })
 export class FullAlbumPageRouteComponent implements OnInit {
+  private albumId: string;
+  private photos: Photo[];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
+    this.photoService.getAlbumPhotos(this.albumId).subscribe(photos => this.photos = photos);
   }
 
 }

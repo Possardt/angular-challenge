@@ -1,3 +1,10 @@
 <p>
   home-page-route works!
 </p>
+<div *ngIf='users'>
+  <ul>
+  <ng-template ngFor let-user [ngForOf]="users" let-i="index">
+    <li (click)='routeToAlbums(user.id)' class='user-row'>{{user.name}}</li>
+  </ng-template>
+  </ul>
+</div>
