@@ -21,3 +21,29 @@
         opacity: 1;
     }
 }
+
+.selected-photo {
+    opacity:0;
+    animation:fadeIn 500ms ease-in-out;
+    -webkit-animation: fadeIn 500ms ease-in-out;
+    animation-direction: forwards;
+    -webkit-animation-fill-mode: forwards;
+    position: absolute;
+    z-index: 2;
+    top: 2em;
+    margin-left:calc(50% - 300px);
+}
+
+.selected-photo-title {
+    position: absolute;
+    z-index: 3;
+    top: 3em;
+    margin-left: calc(50% - 300px);
+}
+
+.leave-selected-photo {
+    position: absolute;
+    z-index: 4;
+    top: 3em;
+    margin-left: 75%;
+}

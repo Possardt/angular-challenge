@@ -11,6 +11,8 @@ import { Photo } from '../../models/photo';
 export class FullAlbumPageRouteComponent implements OnInit {
   private albumId: string;
   private photos: Photo[];
+  private selectedPhoto: Photo;
+  private photosLoaded: boolean = false;
 
   constructor(
     private router: Router,
@@ -21,11 +23,18 @@ export class FullAlbumPageRouteComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.photoService.getAlbumPhotos(this.albumId).subscribe(photos => this.photos = photos);
+    this.photoService.getAlbumPhotos(this.albumId).subscribe(photos => {
+      this.photos = photos;
+      this.photosLoaded = true;
+    });
   }
 
-  fullScreenPhoto() {
-    console.log('clicked');
+  fullScreenPhoto(photo: Photo) {
+    this.selectedPhoto = photo;
+  }
+
+  exitPhoto() {
+    this.selectedPhoto = null;
   }
 
 }

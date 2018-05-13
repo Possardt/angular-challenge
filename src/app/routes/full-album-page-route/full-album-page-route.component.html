@@ -1,7 +1,14 @@
-<div *ngIf='photos' class='photos-container'>
+<div *ngIf='photosLoaded' class='photos-container'>
     <ng-template ngFor let-photo [ngForOf]="photos" let-i="index">
       <div (click)='fullScreenPhoto(photo)' class='photo'>
         <img src='{{photo.thumbnailUrl}}' />
       </div>
     </ng-template>
+</div>
+<div *ngIf='selectedPhoto'>
+  <div class='selected-photo'>
+    <span class='selected-photo-title'>{{selectedPhoto.title}}</span>
+    <button class='leave-selected-photo' (click)='exitPhoto()'>back to photos</button>
+    <img src={{selectedPhoto.url}} />
+  </div>
 </div>
